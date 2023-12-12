@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from "@angular/common/http";
+import { LessonSelectComponent } from './lesson-select/lesson-select.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LessonSelectComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,17 @@
 // Import required modules
 import * as express from 'express';
 import { Request, Response} from 'express';
+import {specs, swaggerUi } from './swaggerOptions';
 
 const app = express();
 
 app.use(express.json()); // => to parse request body with http header "content-type": "application/json"
-
+app.use('/api-docs', swaggerUi.serve,swaggerUi.setup(specs));
 
 app.get('/api/liveness', (req: Request, res: Response) => {
     res.send('OK !!!');
 });
+
 
 interface LearningPackage {
     id?: number;
@@ -93,8 +95,10 @@ app.get('/api/package-summary', (req: Request,res: Response) => {
 })
 
 console.log('starting...');
-app.listen(3000, () => {
-    console.log('Ok, started!');
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 
@@ -103,3 +107,13 @@ app.listen(3000, () => {
     username: 'learningDbUser',
     password: 'test'
 })*/
+
+/**
+ * @swagger
+ * /api/route:
+ *   get:
+ *     description: Description of your endpoint
+ *     responses:
+ *       200:
+ *         description: Successful response
+ */

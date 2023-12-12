@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
