@@ -13,34 +13,47 @@ app.get('/api/liveness', (req: Request, res: Response) => {
 });
 
 
-interface LearningPackage {
+interface Class {
     id?: number;
     title: string;
+    author: string;
+    platform: string;
     description?: string;
-    targetAudience?: string;
     difficulty?: number;
 }
 let idGenerator = 1;
 function newId() {
     return idGenerator++;
 }
-let learningPackages : LearningPackage[] = [
-    {id: newId(), title: 'Learn TypeScript'},
-    {id: newId(), title: 'Learn Angular'},
-    {id: newId(), title: 'Learn NodeJs'},
-    {id: newId(), title: 'Learn Express'},
+let classesAvailable : Class[] = [
+    {id: newId(), title: 'Python for Everybody', author: "University of Michigan", platform: "Coursera"},
+    {id: newId(), title: 'The Web Developer Bootcamp', author: "Colt Steele", platform: "Udemy"},
+    {id: newId(), title: 'CS50\'s Introduction to Computer Science', author: "Harvard University", platform: "edX"},
+    {id: newId(), title: 'Data Science Specialization', author: "Johns Hopkins University", platform: "Coursera"},
+    {id: newId(), title: 'Data Analyst Nanodegree', author: "Udacity", platform: "Udacity"},
+    {id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare"},
+    {id: newId(), title: 'Digital Illustration for Editorial Projects', author: "Cristina Matallana", platform: "Domestika"},
+    {id: newId(), title: 'Project Management Foundations', author: "Bonnie Biafore", platform: "LinkedIn Learning"},
+    {id: newId(), title: 'Financial Markets', author: "Yale University", platform: "Coursera"},
+    {id: newId(), title: 'Offers courses in numerous languages for beginners to advanced learners', author: "?", platform: "Duolingo"},
+    {id: newId(), title: 'Language courses in a variety of languages', author: "?", platform: "Rosetta Stone"},
+    {id: newId(), title: 'Lessons from notable figures in various fields (e.g., writing, acting, cooking)', author: "?", platform: "MasterClass"},
+    {id: newId(), title: 'Learning How to Learn', author: "McMaster University", platform: "Coursera"},
+    {id: newId(), title: 'Math, science, economics, and engineering courses for all ages', author: "?", platform: "Khan Academy"},
+    {id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare"},
+    {id: newId(), title: 'Free lecture notes, exams, and videos from MIT courses', author: "?", platform: "MIT OpenCourseWare"},
 ];
 
-app.get('/api/learning-package', (req: Request, res: Response) => {
-    res.send(learningPackages);
+app.get('/api/classes', (req: Request, res: Response) => {
+    res.send(classesAvailable);
 });
 
-app.get('/api/learning-package/:id', (req: Request, res: Response) => {
+app.get('/api/classes/:id', (req: Request, res: Response) => {
     const id =+req.params.id;
-    const idx = learningPackages.findIndex(p=> p.id === id);
+    const idx = Classes.findIndex(p=> p.id === id);
     if (idx!==-1)
     {
-        res.status(200).send(learningPackages[idx])
+        res.status(200).send(Classes[idx])
     }
     else
     {
@@ -48,22 +61,23 @@ app.get('/api/learning-package/:id', (req: Request, res: Response) => {
     }
 });
 
-app.post('/api/learning-package', (req: Request, res: Response) => {
-    let item = <LearningPackage> req.body;
+app.post('/api/new-class', (req: Request, res: Response) => {
+    let item = <Class> req.body;
     console.log('handle http POST /api/learning-package', item);
     item.id = newId();
-    learningPackages.push(item);
+    Classes.push(item);
     res.send(item);
 });
 
 
-app.put('/api/learning-package/:id', (req: Request, res: Response) => {
+app.put('/api/modify-class/:id', (req: Request, res: Response) => {
     const id = +req.params.id;
-    const idx = learningPackages.findIndex(p=> p.id === id);
+    const title : string = req.body;
+    const idx = Classes.findIndex(p=> p.id === id);
     if (idx!==-1)
     {
-        learningPackages[idx].title = "Changed";
-        res.status(200).send(learningPackages[idx])
+        Classes[idx].title = title;
+        res.status(200).send(Classes[idx])
     }
     else
     {
@@ -71,27 +85,18 @@ app.put('/api/learning-package/:id', (req: Request, res: Response) => {
     }
 })
 
-app.delete('/api/learning-package/:id', (req: Request,res: Response) => {
+app.delete('/api/delete-class/:id', (req: Request,res: Response) => {
     const id = +req.params.id;
-    const idx = learningPackages.findIndex(p => p.id ===id );
+    const idx = Classes.findIndex(p => p.id ===id );
     if (idx !==-1)
     {
-        learningPackages.splice(idx,1);
+        Classes.splice(idx,1);
         res.status(200).send("Element deleted")
     }
     else
     {
         res.status(404).send(`Entity not found for id : ${id}`)
     }
-})
-
-app.get('/api/package-summary', (req: Request,res: Response) => {
-    let response = "";
-    for (let i =0;i<learningPackages.length;i++)
-    {
-        response += "{id : " + learningPackages[i].id.toString() + ", title : " + learningPackages[i].title + "} \n";
-    }
-    res.send(response);
 })
 
 console.log('starting...');
@@ -102,11 +107,6 @@ app.listen(PORT, () => {
 });
 
 
-/*const sequelize = new Sequelize({
-    database: 'LearningFactDb',
-    username: 'learningDbUser',
-    password: 'test'
-})*/
 
 /**
  * @swagger

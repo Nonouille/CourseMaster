@@ -1,1 +1,8 @@
-<p>lesson-select works!</p>
+<body>
+<div>
+  <h2 style="text-align: center">Classes availables</h2>
+</div>
+<div id="courseList" *ngFor="let class of classesAvailable">
+  <ul><input type="checkbox">{{class.title}}</ul>
+</div>
+</body>

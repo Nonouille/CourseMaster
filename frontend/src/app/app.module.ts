@@ -8,6 +8,8 @@ import { LessonSelectComponent } from './lesson-select/lesson-select.component';
 import { CourseComponent } from './course/course.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
+import { CourseEditDetailComponent } from './course-edit-detail/course-edit-detail.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { StatistiquesComponent } from './statistiques/statistiques.component';
     LessonSelectComponent,
     CourseComponent,
     CourseEditComponent,
-    StatistiquesComponent
+    StatistiquesComponent,
+    CourseEditDetailComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

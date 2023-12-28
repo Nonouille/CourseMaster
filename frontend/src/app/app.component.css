@@ -1,0 +1,27 @@
+.banner {
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.banner ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.banner ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.banner ul li:last-child {
+  margin-right: 0;
+}
+
+.banner ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}

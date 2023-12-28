@@ -13,71 +13,72 @@ let idGenerator = 1;
 function newId() {
     return idGenerator++;
 }
-let learningPackages = [
-    { id: newId(), title: 'Learn TypeScript' },
-    { id: newId(), title: 'Learn Angular' },
-    { id: newId(), title: 'Learn NodeJs' },
-    { id: newId(), title: 'Learn Express' },
+let classesAvailable = [
+    { id: newId(), title: 'Python for Everybody', author: "University of Michigan", platform: "Coursera" },
+    { id: newId(), title: 'The Web Developer Bootcamp', author: "Colt Steele", platform: "Udemy" },
+    { id: newId(), title: 'CS50\'s Introduction to Computer Science', author: "Harvard University", platform: "edX" },
+    { id: newId(), title: 'Data Science Specialization', author: "Johns Hopkins University", platform: "Coursera" },
+    { id: newId(), title: 'Data Analyst Nanodegree', author: "Udacity", platform: "Udacity" },
+    { id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare" },
+    { id: newId(), title: 'Digital Illustration for Editorial Projects', author: "Cristina Matallana", platform: "Domestika" },
+    { id: newId(), title: 'Project Management Foundations', author: "Bonnie Biafore", platform: "LinkedIn Learning" },
+    { id: newId(), title: 'Financial Markets', author: "Yale University", platform: "Coursera" },
+    { id: newId(), title: 'Offers courses in numerous languages for beginners to advanced learners', author: "?", platform: "Duolingo" },
+    { id: newId(), title: 'Language courses in a variety of languages', author: "?", platform: "Rosetta Stone" },
+    { id: newId(), title: 'Lessons from notable figures in various fields (e.g., writing, acting, cooking)', author: "?", platform: "MasterClass" },
+    { id: newId(), title: 'Learning How to Learn', author: "McMaster University", platform: "Coursera" },
+    { id: newId(), title: 'Math, science, economics, and engineering courses for all ages', author: "?", platform: "Khan Academy" },
+    { id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare" },
+    { id: newId(), title: 'Free lecture notes, exams, and videos from MIT courses', author: "?", platform: "MIT OpenCourseWare" },
 ];
-app.get('/api/learning-package', (req, res) => {
-    res.send(learningPackages);
+app.get('/api/classes', (req, res) => {
+    res.send(classesAvailable);
 });
-app.get('/api/learning-package/:id', (req, res) => {
+app.get('/api/classes/:id', (req, res) => {
     const id = +req.params.id;
-    const idx = learningPackages.findIndex(p => p.id === id);
+    const idx = Classes.findIndex(p => p.id === id);
     if (idx !== -1) {
-        res.status(200).send(learningPackages[idx]);
+        res.status(200).send(Classes[idx]);
     }
     else {
         res.status(404).send(`Entity not found for id : ${id}`);
     }
 });
-app.post('/api/learning-package', (req, res) => {
+app.post('/api/new-class', (req, res) => {
     let item = req.body;
     console.log('handle http POST /api/learning-package', item);
     item.id = newId();
-    learningPackages.push(item);
+    Classes.push(item);
     res.send(item);
 });
-app.put('/api/learning-package/:id', (req, res) => {
+app.put('/api/modify-class/:id', (req, res) => {
     const id = +req.params.id;
-    const idx = learningPackages.findIndex(p => p.id === id);
+    const title = req.body;
+    const idx = Classes.findIndex(p => p.id === id);
     if (idx !== -1) {
-        learningPackages[idx].title = "Changed";
-        res.status(200).send(learningPackages[idx]);
+        Classes[idx].title = title;
+        res.status(200).send(Classes[idx]);
     }
     else {
         res.status(404).send(`Entity not found for id : ${id}`);
     }
 });
-app.delete('/api/learning-package/:id', (req, res) => {
+app.delete('/api/delete-class/:id', (req, res) => {
     const id = +req.params.id;
-    const idx = learningPackages.findIndex(p => p.id === id);
+    const idx = Classes.findIndex(p => p.id === id);
     if (idx !== -1) {
-        learningPackages.splice(idx, 1);
+        Classes.splice(idx, 1);
         res.status(200).send("Element deleted");
     }
     else {
         res.status(404).send(`Entity not found for id : ${id}`);
     }
 });
-app.get('/api/package-summary', (req, res) => {
-    let response = "";
-    for (let i = 0; i < learningPackages.length; i++) {
-        response += "{id : " + learningPackages[i].id.toString() + ", title : " + learningPackages[i].title + "} \n";
-    }
-    res.send(response);
-});
 console.log('starting...');
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-/*const sequelize = new Sequelize({
-    database: 'LearningFactDb',
-    username: 'learningDbUser',
-    password: 'test'
-})*/
 /**
  * @swagger
  * /api/route:
