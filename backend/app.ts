@@ -44,16 +44,21 @@ let classesAvailable : Class[] = [
     {id: newId(), title: 'Free lecture notes, exams, and videos from MIT courses', author: "?", platform: "MIT OpenCourseWare"},
 ];
 
-app.get('/api/classes', (req: Request, res: Response) => {
+let pickedClasses : Class[] = [];
+
+app.get('/api/availableClasses', (req: Request, res: Response) => {
     res.send(classesAvailable);
+});
+app.get('/api/pickedClasses', (req: Request, res: Response) => {
+    res.send(pickedClasses);
 });
 
 app.get('/api/classes/:id', (req: Request, res: Response) => {
     const id =+req.params.id;
-    const idx = Classes.findIndex(p=> p.id === id);
+    const idx = classesAvailable.findIndex(p=> p.id === id);
     if (idx!==-1)
     {
-        res.status(200).send(Classes[idx])
+        res.status(200).send(classesAvailable[idx])
     }
     else
     {
@@ -61,11 +66,25 @@ app.get('/api/classes/:id', (req: Request, res: Response) => {
     }
 });
 
+app.post('/api/add-to-personal' , (req : Request, res : Response) => {
+    const pickedClass : Class = req.body;
+    if (pickedClass!==undefined )
+    {
+        pickedClasses.push(pickedClass);
+        res.status(200).send(`Success ${pickedClass.title} added`);
+    }
+    else
+    {
+        res.status(404).send(`Error adding : ${pickedClass}`)
+    }
+
+})
+
 app.post('/api/new-class', (req: Request, res: Response) => {
     let item = <Class> req.body;
     console.log('handle http POST /api/learning-package', item);
     item.id = newId();
-    Classes.push(item);
+    classesAvailable.push(item);
     res.send(item);
 });
 
@@ -73,11 +92,11 @@ app.post('/api/new-class', (req: Request, res: Response) => {
 app.put('/api/modify-class/:id', (req: Request, res: Response) => {
     const id = +req.params.id;
     const title : string = req.body;
-    const idx = Classes.findIndex(p=> p.id === id);
+    const idx = classesAvailable.findIndex(p=> p.id === id);
     if (idx!==-1)
     {
-        Classes[idx].title = title;
-        res.status(200).send(Classes[idx])
+        classesAvailable[idx].title = title;
+        res.status(200).send(classesAvailable[idx])
     }
     else
     {
@@ -87,10 +106,10 @@ app.put('/api/modify-class/:id', (req: Request, res: Response) => {
 
 app.delete('/api/delete-class/:id', (req: Request,res: Response) => {
     const id = +req.params.id;
-    const idx = Classes.findIndex(p => p.id ===id );
+    const idx = classesAvailable.findIndex(p => p.id ===id );
     if (idx !==-1)
     {
-        Classes.splice(idx,1);
+        classesAvailable.splice(idx,1);
         res.status(200).send("Element deleted")
     }
     else

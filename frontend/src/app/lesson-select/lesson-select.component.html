@@ -2,7 +2,7 @@
 <div>
   <h2 style="text-align: center">Classes availables</h2>
 </div>
-<div id="courseList" *ngFor="let class of classesAvailable">
-  <ul><input type="checkbox">{{class.title}}</ul>
+<div id="courseList" *ngFor="let singleClass of classesAvailable">
+  <ul><input type="checkbox" (click)="addToList(singleClass)">{{singleClass.title}}</ul>
 </div>
 </body>

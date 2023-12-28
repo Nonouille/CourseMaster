@@ -31,33 +31,47 @@ let classesAvailable = [
     { id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare" },
     { id: newId(), title: 'Free lecture notes, exams, and videos from MIT courses', author: "?", platform: "MIT OpenCourseWare" },
 ];
-app.get('/api/classes', (req, res) => {
+let pickedClasses = [];
+app.get('/api/availableClasses', (req, res) => {
     res.send(classesAvailable);
+});
+app.get('/api/pickedClasses', (req, res) => {
+    res.send(pickedClasses);
 });
 app.get('/api/classes/:id', (req, res) => {
     const id = +req.params.id;
-    const idx = Classes.findIndex(p => p.id === id);
+    const idx = classesAvailable.findIndex(p => p.id === id);
     if (idx !== -1) {
-        res.status(200).send(Classes[idx]);
+        res.status(200).send(classesAvailable[idx]);
     }
     else {
         res.status(404).send(`Entity not found for id : ${id}`);
+    }
+});
+app.post('/api/add-to-personal', (req, res) => {
+    const pickedClass = req.body;
+    if (pickedClass !== undefined) {
+        pickedClasses.push(pickedClass);
+        res.status(200).send(`Success ${pickedClass.title} added`);
+    }
+    else {
+        res.status(404).send(`Error adding : ${pickedClass}`);
     }
 });
 app.post('/api/new-class', (req, res) => {
     let item = req.body;
     console.log('handle http POST /api/learning-package', item);
     item.id = newId();
-    Classes.push(item);
+    classesAvailable.push(item);
     res.send(item);
 });
 app.put('/api/modify-class/:id', (req, res) => {
     const id = +req.params.id;
     const title = req.body;
-    const idx = Classes.findIndex(p => p.id === id);
+    const idx = classesAvailable.findIndex(p => p.id === id);
     if (idx !== -1) {
-        Classes[idx].title = title;
-        res.status(200).send(Classes[idx]);
+        classesAvailable[idx].title = title;
+        res.status(200).send(classesAvailable[idx]);
     }
     else {
         res.status(404).send(`Entity not found for id : ${id}`);
@@ -65,9 +79,9 @@ app.put('/api/modify-class/:id', (req, res) => {
 });
 app.delete('/api/delete-class/:id', (req, res) => {
     const id = +req.params.id;
-    const idx = Classes.findIndex(p => p.id === id);
+    const idx = classesAvailable.findIndex(p => p.id === id);
     if (idx !== -1) {
-        Classes.splice(idx, 1);
+        classesAvailable.splice(idx, 1);
         res.status(200).send("Element deleted");
     }
     else {
