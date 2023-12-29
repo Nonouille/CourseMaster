@@ -60,7 +60,7 @@ export class LessonSelectComponent implements OnInit{
   }
 
   removeFromPicked(id: number) {
-    this.http.delete(`/api/remove-from-personal/${id}`).subscribe(
+    this.http.delete(`/api/remove-from-picked/${id}`).subscribe(
       (response) => {
         console.log('Response:', response);
       },
