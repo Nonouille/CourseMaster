@@ -2,6 +2,15 @@ import { Component } from '@angular/core';
 import { environment} from "../environments/environment";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
+export interface Class {
+  id: number;
+  title: string;
+  author: string;
+  platform: string;
+  description?: string;
+  difficulty?: number;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

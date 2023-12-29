@@ -1,0 +1,26 @@
+.class-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    width: 300px; /* Adjust width as needed */
+    margin: 0 auto;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail p {
+    margin: 0;
+    font-weight: bold;
+}
+
+input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}

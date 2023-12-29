@@ -6,7 +6,7 @@ const options = {
         info: {
             title: 'Your API Title',
             version: '1.0.0',
-            description: 'Description of your API',
+            description: 'Node & React backend',
         },
     },
     apis: ['app.js'],

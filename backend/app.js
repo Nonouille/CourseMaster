@@ -38,17 +38,17 @@ app.get('/api/availableClasses', (req, res) => {
 app.get('/api/pickedClasses', (req, res) => {
     res.send(pickedClasses);
 });
-app.get('/api/classes/:id', (req, res) => {
+app.get('/api/pickedClass/:id', (req, res) => {
     const id = +req.params.id;
-    const idx = classesAvailable.findIndex(p => p.id === id);
+    const idx = pickedClasses.findIndex(p => p.id === id);
     if (idx !== -1) {
-        res.status(200).send(classesAvailable[idx]);
+        res.status(200).send(pickedClasses[idx]);
     }
     else {
         res.status(404).send(`Entity not found for id : ${id}`);
     }
 });
-app.post('/api/add-to-personal', (req, res) => {
+app.post('/api/add-to-picked', (req, res) => {
     const pickedClass = req.body;
     if (pickedClass !== undefined) {
         pickedClasses.push(pickedClass);
@@ -69,13 +69,6 @@ app.delete('/api/remove-from-picked/:id', (req, res) => {
         res.status(404).send({ error: `Class with ID ${classIdToRemove} not found in personal.` });
     }
 });
-app.post('/api/new-class', (req, res) => {
-    let item = req.body;
-    console.log('handle http POST /api/learning-package', item);
-    item.id = newId();
-    classesAvailable.push(item);
-    res.send(item);
-});
 app.put('/api/modify-class/:id', (req, res) => {
     const id = +req.params.id;
     const title = req.body;
@@ -93,13 +86,106 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+const swaggerOptions = {
+    // Other Swagger options
+    components: {
+        schemas: {
+            Class: {
+                type: 'object',
+                properties: {
+                    id: { type: 'integer' },
+                    title: { type: 'string' },
+                    author: { type: 'string' },
+                    platform: { type: 'string' },
+                    description: { type: 'string' },
+                    difficulty: { type: 'number' }
+                },
+                // Additional schema properties or definitions for Class
+            },
+            // Define other schemas if needed
+        },
+        // Other components if needed
+    },
+    // Other Swagger options
+};
 /**
  * @swagger
- * /api/route:
+ * /api/availableClasses:
+ *      get:
+ *          summary: Get all available classes
+ *          description : Get all available classes
+ *          responses:
+ *              200:
+ *                  description: All available classes are retrieved
+ *              400:
+ *                  description: Problem retrieving all available classes
+ */
+/**
+ * @swagger
+ * /api/pickedClasses:
+ *      get:
+ *          summary : Get all picked classes
+ *          description : Get all picked classes
+ *          responses:
+ *              200:
+ *                  description: All picked classes are retrieved
+ *              400:
+ *                  description: Problem retrieving all picked classes
+ */
+/**
+ * @swagger
+ * /api/pickedClass/{id}:
  *   get:
- *     description: Description of your endpoint
+ *     summary: Get a specific picked class by ID
+ *     description: Retrieve details of a picked class by its ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: ID of the picked class to retrieve
+ *         required: true
+ *         schema:
+ *           type: integer
  *     responses:
  *       200:
- *         description: Successful response
+ *         description: Successful response with the picked class details
+ *       404:
+ *         description: Picked class with the provided ID not found
+ */
+/**
+ * @swagger
+ * /api/add-to-picked:
+ *   post:
+ *     summary: Add a class to the picked classes list
+ *     description: Add a class to the picked classes list
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Class'
+ *     responses:
+ *       200:
+ *         description: Successful response with a message indicating the class was added
+ *       404:
+ *         description: Error response when the request body is invalid or missing
+ */
+/**
+ * @swagger
+ * /api/remove-from-picked/{id}:
+ *   delete:
+ *     summary: Remove a class from the picked classes list by ID
+ *     description: Delete a class from the picked classes list based on its ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: ID of the class to remove from the picked classes list
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Successful response with a message indicating the class was removed
+ *       404:
+ *         description: Class with the provided ID not found in the picked classes list
  */ 
 //# sourceMappingURL=app.js.map

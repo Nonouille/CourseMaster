@@ -13,7 +13,7 @@ const routes: Routes = [
   { path : 'course-edit-detail/:id', component : CourseEditDetailComponent},
   { path : 'lesson-select', component : LessonSelectComponent},
   { path : 'statistiques', component : StatistiquesComponent},
-  { path : '#', component : MainComponent}
+  { path : '', component : MainComponent}
 ];
 
 @NgModule({

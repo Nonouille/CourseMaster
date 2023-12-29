@@ -1,1 +1,6 @@
-<p>course-edit works!</p>
+<ul class="picked-classes">
+    <li *ngFor="let class of pickedClasses" class="class-item">
+        <p>{{ class.title }}</p>
+        <button (click)="modifyClass(class.id)">Modify this class</button>
+    </li>
+</ul>

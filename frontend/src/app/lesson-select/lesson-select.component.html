@@ -1,15 +1,17 @@
 <body>
 <div>
-  <h2 style="text-align: center">Classes availables</h2>
+  <h2 class="center-text">Classes available</h2>
 </div>
-<div id="courseList" *ngFor="let singleClass of classesAvailable">
-  <ul>
-    <input
-      type="checkbox"
-      [checked]="classIsPicked(singleClass)"
-      (change)="classIsPicked(singleClass) ? removeFromPicked(singleClass.id) : addToPicked(singleClass)"
-    >
-    {{singleClass.title}}
+<div class="course-list">
+  <ul *ngFor="let singleClass of classesAvailable" class="class-item">
+    <li>
+      <input
+        type="checkbox"
+        [checked]="classIsPicked(singleClass)"
+        (change)="classIsPicked(singleClass) ? removeFromPicked(singleClass.id) : addToPicked(singleClass)"
+      >
+      <span>{{ singleClass.title }}</span>
+    </li>
   </ul>
 </div>
 </body>

@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
+import {Class} from "../app.component";
 
-export interface Class {
-  id: number;
-  title: string;
-  description?: string;
-  targetAudience?: string;
-  difficulty?: number;
-}
 @Component({
   selector: 'app-lesson-select',
   templateUrl: './lesson-select.component.html',
@@ -25,7 +19,6 @@ export class LessonSelectComponent implements OnInit{
     this.http.get<Class[]>('/api/availableClasses').subscribe(
       (data: Class[]) => {
         this.classesAvailable = data;
-        console.log(`Classes available : ${this.classesAvailable}`);
       },
       (error: any) => {
         console.error('Error fetching classes:', error);
@@ -34,7 +27,6 @@ export class LessonSelectComponent implements OnInit{
     this.http.get<Class[]>('/api/pickedClasses').subscribe(
       (data: Class[]) => {
         this.pickedClasses = data;
-        console.log(`Picked Classes : ${this.pickedClasses}`);
       },
       (error: any) => {
         console.error('Error fetching classes:', error);
@@ -51,7 +43,7 @@ export class LessonSelectComponent implements OnInit{
   addToPicked(selectedClass: Class){
     const body = selectedClass;
       console.log(`index to add ${selectedClass.id}`)
-      this.http.post<Class>('/api/add-to-personal', body).subscribe(
+      this.http.post<Class>('/api/add-to-picked', body).subscribe(
         (data) => {
           console.log('Successfully added to personal:', data);
           window.location.reload();
