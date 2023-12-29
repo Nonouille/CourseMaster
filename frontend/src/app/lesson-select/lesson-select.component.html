@@ -3,6 +3,13 @@
   <h2 style="text-align: center">Classes availables</h2>
 </div>
 <div id="courseList" *ngFor="let singleClass of classesAvailable">
-  <ul><input type="checkbox" (click)="addToList(singleClass)">{{singleClass.title}}</ul>
+  <ul>
+    <input
+      type="checkbox"
+      [checked]="classIsPicked(singleClass)"
+      (change)="classIsPicked(singleClass) ? removeFromPicked(singleClass.id) : addToPicked(singleClass)"
+    >
+    {{singleClass.title}}
+  </ul>
 </div>
 </body>

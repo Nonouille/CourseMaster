@@ -52,10 +52,21 @@ app.post('/api/add-to-personal', (req, res) => {
     const pickedClass = req.body;
     if (pickedClass !== undefined) {
         pickedClasses.push(pickedClass);
-        res.status(200).send(`Success ${pickedClass.title} added`);
+        res.status(200).send({ message: `success, Class ID = ${pickedClass.id} added` });
     }
     else {
-        res.status(404).send(`Error adding : ${pickedClass}`);
+        res.status(404).send({ message: `Error adding : ${pickedClass.id}` });
+    }
+});
+app.delete('/api/remove-from-picked/:id', (req, res) => {
+    const classIdToRemove = +req.params.id;
+    const index = pickedClasses.findIndex((Class) => Class.id === classIdToRemove);
+    if (index !== -1) {
+        pickedClasses.splice(index, 1);
+        res.status(200).send({ message: `Class with ID ${classIdToRemove} removed from personal.` });
+    }
+    else {
+        res.status(404).send({ error: `Class with ID ${classIdToRemove} not found in personal.` });
     }
 });
 app.post('/api/new-class', (req, res) => {
@@ -72,17 +83,6 @@ app.put('/api/modify-class/:id', (req, res) => {
     if (idx !== -1) {
         classesAvailable[idx].title = title;
         res.status(200).send(classesAvailable[idx]);
-    }
-    else {
-        res.status(404).send(`Entity not found for id : ${id}`);
-    }
-});
-app.delete('/api/delete-class/:id', (req, res) => {
-    const id = +req.params.id;
-    const idx = classesAvailable.findIndex(p => p.id === id);
-    if (idx !== -1) {
-        classesAvailable.splice(idx, 1);
-        res.status(200).send("Element deleted");
     }
     else {
         res.status(404).send(`Entity not found for id : ${id}`);

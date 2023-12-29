@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 
 export interface Class {
-  id?: number;
+  id: number;
   title: string;
   description?: string;
   targetAudience?: string;
@@ -16,8 +16,8 @@ export interface Class {
 })
 
 export class LessonSelectComponent implements OnInit{
-  classesAvailable : Class[] = []
-  id: number | undefined = 0;
+  classesAvailable : Class[] = [];
+  pickedClasses : Class[] = [];
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -25,6 +25,16 @@ export class LessonSelectComponent implements OnInit{
     this.http.get<Class[]>('/api/availableClasses').subscribe(
       (data: Class[]) => {
         this.classesAvailable = data;
+        console.log(`Classes available : ${this.classesAvailable}`);
+      },
+      (error: any) => {
+        console.error('Error fetching classes:', error);
+      }
+    );
+    this.http.get<Class[]>('/api/pickedClasses').subscribe(
+      (data: Class[]) => {
+        this.pickedClasses = data;
+        console.log(`Picked Classes : ${this.pickedClasses}`);
       },
       (error: any) => {
         console.error('Error fetching classes:', error);
@@ -32,18 +42,30 @@ export class LessonSelectComponent implements OnInit{
     );
   }
 
-  addToList(selectedClass: Class){
+  // Add a function to check if a class is present in pickedClasses
+  classIsPicked(singleClass: Class): boolean {
+    return this.pickedClasses.some((pickedClass: Class) => pickedClass.id === singleClass.id);
+  }
+
+  // Function to add/remove class from pickedClasses
+  addToPicked(selectedClass: Class){
     const body = selectedClass;
-    this.http.post<Class>('/api/add-to-personal', body).subscribe(
-      (data) => {
-        console.log('Successfully added to personal:', data);
-        // Handle the response here if needed
+      console.log(`index to add ${selectedClass.id}`)
+      this.http.post<Class>('/api/add-to-personal', body).subscribe(
+        (data) => {
+          console.log('Successfully added to personal:', data);
+          window.location.reload();
+        }
+      );
+  }
+
+  removeFromPicked(id: number) {
+    this.http.delete(`/api/remove-from-personal/${id}`).subscribe(
+      (response) => {
+        console.log('Response:', response);
       },
-      (error) => {
-        console.error('Error while adding to personal:', error);
-        // Handle the error here if needed
-      }
     );
   }
 
+  protected readonly removeEventListener = removeEventListener;
 }
