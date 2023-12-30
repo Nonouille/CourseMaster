@@ -24,9 +24,9 @@
 /* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
-  height: 30px;
-  width: 30px;
-  margin: 0 5px;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-flex;
@@ -52,10 +52,39 @@
 
 .carousel-caption {
   position: absolute;
-  top: 50%;
+  color: white;
+  align-self: center;
+  margin-top: 20px;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
   text-align: center;
   width: 80%; /* Adjust the width as needed */
+}
+
+.dot-container{
+  position: absolute;
+  color: white;
+  align-self: center;
+  margin-top: 20px;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%; /* Adjust the width as needed */
+}
+
+.circle {
+  cursor: pointer;
+  height: 200px; /* Adjust as needed */
+  width: 200px; /* Adjust as needed */
+  background-color: #3498DB;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 2s ease;
+  font-size: 23px; /* Adjust font size as needed */
+  font-weight: bold; /* Adjust font weight as needed */
+  padding: 15px; /* Adjust the padding as needed */
 }

@@ -55,6 +55,7 @@ export class LessonSelectComponent implements OnInit{
     this.http.delete(`/api/remove-from-picked/${id}`).subscribe(
       (response) => {
         console.log('Response:', response);
+        window.location.reload();
       },
     );
   }

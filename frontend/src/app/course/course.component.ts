@@ -50,4 +50,8 @@ export class CourseComponent implements OnInit {
     slides[this.slideIndex].style.display = 'block';
     dots[this.slideIndex].classList.add('active');
   }
+
+  goToQuizz(id:number){
+    this.router.navigate([`/course/${id}/question/1`]);
+  }
 }
