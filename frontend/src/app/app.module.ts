@@ -7,10 +7,10 @@ import { HttpClientModule} from "@angular/common/http";
 import { LessonSelectComponent } from './lesson-select/lesson-select.component';
 import { CourseComponent } from './course/course.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
-import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { CourseEditDetailComponent } from './course-edit-detail/course-edit-detail.component';
 import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { CourseDetailComponent } from './course-detail/course-detail.component';
     LessonSelectComponent,
     CourseComponent,
     CourseEditComponent,
-    StatistiquesComponent,
+    StatisticsComponent,
     CourseEditDetailComponent,
     CourseQuizzComponent,
     CourseDetailComponent

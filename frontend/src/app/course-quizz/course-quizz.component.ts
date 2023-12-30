@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Class} from "../app.component";
 import {HttpClient} from "@angular/common/http";
-
 @Component({
   selector: 'app-course-quizz',
   templateUrl: './course-quizz.component.html',
@@ -16,6 +15,7 @@ export class CourseQuizzComponent implements OnInit{
   toggleCard(): void {
     this.isFlipped = !this.isFlipped;
   }
+
   constructor(private http : HttpClient) {
   }
 
