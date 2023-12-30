@@ -1,0 +1,32 @@
+.container {
+  text-align: center;
+}
+
+.chapters-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.chapter {
+  margin-right: 20px;
+  display: flex;
+}
+
+.chapter-id {
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.quizz-button {
+  border-radius: 5%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 50px;
+  margin-right: 100px;
+  padding: 10px 20px; /* Adjust padding for better button appearance */
+  background-color: #4CAF50; /* Add your preferred button color */
+  color: white;
+  border: none;
+  cursor: pointer;
+}

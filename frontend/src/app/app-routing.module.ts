@@ -6,15 +6,16 @@ import {LessonSelectComponent} from "./lesson-select/lesson-select.component";
 import {StatistiquesComponent} from "./statistiques/statistiques.component";
 import {CourseEditDetailComponent} from "./course-edit-detail/course-edit-detail.component";
 import {CourseQuizzComponent} from "./course-quizz/course-quizz.component";
+import {CourseDetailComponent} from "./course-detail/course-detail.component";
 
 const routes: Routes = [
-  { path : 'courses', component : CourseComponent},
+  { path : '', component : CourseComponent},
+  { path : 'course/:id', component: CourseDetailComponent},
+  { path : 'course/:id/question/:id', component : CourseQuizzComponent},
   { path : 'course-edit' , component : CourseEditComponent},
   { path : 'course-edit-detail/:id', component : CourseEditDetailComponent},
   { path : 'lesson-select', component : LessonSelectComponent},
   { path : 'statistiques', component : StatistiquesComponent},
-  { path : 'course/:id/question/:id', component : CourseQuizzComponent},
-  { path : '', component : CourseComponent},
 ];
 
 @NgModule({

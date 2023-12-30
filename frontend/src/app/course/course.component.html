@@ -1,7 +1,7 @@
 <div class="slideshow-container">
   <div *ngFor="let class of pickedClasses; let i = index" [class]="i === slideIndex ? 'slide active' : 'slide'">
     <div class="carousel-caption">
-      <span class="circle" (click)="goToQuizz(class.id)">{{ class.title }}</span>
+      <span class="circle" (click)="goToCourse(class.id)">{{ class.title }}</span>
     </div>
     <div class="text">{{ class.description }}</div>
   </div>

@@ -4,24 +4,23 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 export interface Class {
   id: number;
+  name?: string;
   title: string;
   author: string;
   platform: string;
   description?: string;
   difficulty?: number;
-  chapters? : [
+  chapters? :
     {
       chapterID : number;
       text : string;
-    }
-  ]
-  questions? : [
+    }[]
+  questions? :
     {
       question? : string;
       answer? : string;
-      learnedCoef?: number;
-    }
-  ]
+      learnedCoef? : number | 1;
+    }[]
 }
 
 @Component({

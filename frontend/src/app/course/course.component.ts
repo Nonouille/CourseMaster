@@ -51,7 +51,7 @@ export class CourseComponent implements OnInit {
     dots[this.slideIndex].classList.add('active');
   }
 
-  goToQuizz(id:number){
-    this.router.navigate([`/course/${id}/question/1`]);
+  goToCourse(id:number){
+    this.router.navigate([`/course/${id}`]);
   }
 }
