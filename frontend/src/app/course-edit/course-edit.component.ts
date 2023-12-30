@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './course-edit.component.html',
   styleUrls: ['./course-edit.component.css']
 })
+
 export class CourseEditComponent implements OnInit{
   pickedClasses : Class[] = [];
   constructor(private http: HttpClient, private router : Router) {

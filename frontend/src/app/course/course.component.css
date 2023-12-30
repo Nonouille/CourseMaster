@@ -1,0 +1,6 @@
+/* Add your carousel styles here */
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 20px;
+}

@@ -9,7 +9,8 @@ import { CourseComponent } from './course/course.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { CourseEditDetailComponent } from './course-edit-detail/course-edit-detail.component';
-import { MainComponent } from './main/main.component';
+import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
+import {CarouselModule} from "ngx-bootstrap/carousel";
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { MainComponent } from './main/main.component';
     CourseEditComponent,
     StatistiquesComponent,
     CourseEditDetailComponent,
-    MainComponent
+    CourseQuizzComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

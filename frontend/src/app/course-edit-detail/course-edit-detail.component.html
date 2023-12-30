@@ -1,22 +1,19 @@
 <div class="class-details">
-    <div class="detail">
-        <p>Title :</p>
-        <input [value]="modifiedClass?.title">
-    </div>
-    <div class="detail">
-        <p>Description :</p>
-        <input [value]="modifiedClass?.description">
-    </div>
-    <div class="detail">
-        <p>Author :</p>
-        <input [value]="modifiedClass?.author">
-    </div>
-    <div class="detail">
-        <p>Platform :</p>
-        <input [value]="modifiedClass?.platform">
-    </div>
-    <div class="detail">
-        <p>Difficulty :</p>
-        <input [value]="modifiedClass?.difficulty">
-    </div>
+  <h3>{{modifiedClass?.title}}</h3>
+  <div class="detail">
+      <p>Author :</p>
+      <a>{{modifiedClass?.author}}</a>
+  </div>
+  <div class="detail">
+      <p>Platform :</p>
+      <a>{{modifiedClass?.platform}}</a>
+  </div>
+  <div class="detail">
+    <p>Description :</p>
+    <a>{{modifiedClass?.description}}</a>
+  </div>
+  <div class="detail">
+      <p>Difficulty :</p>
+      <a>{{modifiedClass?.difficulty}}</a>
+  </div>
 </div>

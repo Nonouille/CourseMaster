@@ -9,6 +9,18 @@ export interface Class {
   platform: string;
   description?: string;
   difficulty?: number;
+  chapters? : [
+    {
+      chapterID : number;
+      text : string;
+    }
+  ]
+  questions? : [
+    {
+      question? : string;
+      answer? : string;
+    }
+  ]
 }
 
 @Component({

@@ -14,22 +14,54 @@ function newId() {
     return idGenerator++;
 }
 let classesAvailable = [
-    { id: newId(), title: 'Python for Everybody', author: "University of Michigan", platform: "Coursera" },
-    { id: newId(), title: 'The Web Developer Bootcamp', author: "Colt Steele", platform: "Udemy" },
-    { id: newId(), title: 'CS50\'s Introduction to Computer Science', author: "Harvard University", platform: "edX" },
-    { id: newId(), title: 'Data Science Specialization', author: "Johns Hopkins University", platform: "Coursera" },
-    { id: newId(), title: 'Data Analyst Nanodegree', author: "Udacity", platform: "Udacity" },
-    { id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare" },
-    { id: newId(), title: 'Digital Illustration for Editorial Projects', author: "Cristina Matallana", platform: "Domestika" },
-    { id: newId(), title: 'Project Management Foundations', author: "Bonnie Biafore", platform: "LinkedIn Learning" },
-    { id: newId(), title: 'Financial Markets', author: "Yale University", platform: "Coursera" },
-    { id: newId(), title: 'Offers courses in numerous languages for beginners to advanced learners', author: "?", platform: "Duolingo" },
-    { id: newId(), title: 'Language courses in a variety of languages', author: "?", platform: "Rosetta Stone" },
-    { id: newId(), title: 'Lessons from notable figures in various fields (e.g., writing, acting, cooking)', author: "?", platform: "MasterClass" },
-    { id: newId(), title: 'Learning How to Learn', author: "McMaster University", platform: "Coursera" },
-    { id: newId(), title: 'Math, science, economics, and engineering courses for all ages', author: "?", platform: "Khan Academy" },
-    { id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare" },
-    { id: newId(), title: 'Free lecture notes, exams, and videos from MIT courses', author: "?", platform: "MIT OpenCourseWare" },
+    {
+        id: newId(), title: 'Python for Everybody', author: "University of Michigan", platform: "Coursera"
+    },
+    {
+        id: newId(), title: 'The Web Developer Bootcamp', author: "Colt Steele", platform: "Udemy"
+    },
+    {
+        id: newId(), title: 'CS50\'s Introduction to Computer Science', author: "Harvard University", platform: "edX"
+    },
+    {
+        id: newId(), title: 'Data Science Specialization', author: "Johns Hopkins University", platform: "Coursera"
+    },
+    {
+        id: newId(), title: 'Data Analyst Nanodegree', author: "Udacity", platform: "Udacity"
+    },
+    {
+        id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare"
+    },
+    {
+        id: newId(), title: 'Digital Illustration for Editorial Projects', author: "Cristina Matallana", platform: "Domestika"
+    },
+    {
+        id: newId(), title: 'Project Management Foundations', author: "Bonnie Biafore", platform: "LinkedIn Learning"
+    },
+    {
+        id: newId(), title: 'Financial Markets', author: "Yale University", platform: "Coursera"
+    },
+    {
+        id: newId(), title: 'Offers courses in numerous languages for beginners to advanced learners', author: "?", platform: "Duolingo"
+    },
+    {
+        id: newId(), title: 'Language courses in a variety of languages', author: "?", platform: "Rosetta Stone"
+    },
+    {
+        id: newId(), title: 'Lessons from notable figures in various fields (e.g., writing, acting, cooking)', author: "?", platform: "MasterClass"
+    },
+    {
+        id: newId(), title: 'Learning How to Learn', author: "McMaster University", platform: "Coursera"
+    },
+    {
+        id: newId(), title: 'Math, science, economics, and engineering courses for all ages', author: "?", platform: "Khan Academy"
+    },
+    {
+        id: newId(), title: 'Various courses on graphic design, illustration, and UX/UI design', author: "?", platform: "Skillshare"
+    },
+    {
+        id: newId(), title: 'Free lecture notes, exams, and videos from MIT courses', author: "?", platform: "MIT OpenCourseWare"
+    },
 ];
 let pickedClasses = [];
 app.get('/api/availableClasses', (req, res) => {
@@ -163,11 +195,20 @@ const swaggerOptions = {
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Class'
+ *           example:
+ *             id: 1
+ *             title: "Your Class Title"
+ *             author: "Author Name"
+ *             platform: "Platform Name"
+ *             description: "Description of the class"
+ *             difficulty: 3
  *     responses:
  *       200:
  *         description: Successful response with a message indicating the class was added
  *       404:
  *         description: Error response when the request body is invalid or missing
+ *
+ *
  */
 /**
  * @swagger
