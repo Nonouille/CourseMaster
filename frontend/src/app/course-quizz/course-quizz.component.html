@@ -1,1 +1,13 @@
-<p>course-quizz works!</p>
+<div class="card-container" *ngIf="selectedClass && selectedClass.questions && selectedQuestion">
+  <div class="card" (click)="toggleCard()" >
+    <div class="card-content" [ngClass]="{ 'flipped': isFlipped }" >
+      <div class="front">
+        <p class="question-text">{{ selectedClass.questions[selectedQuestion - 1].question }}</p>
+        <p class="instruction">(Click to view answer)</p>
+      </div>
+      <div class="back">
+        <p class="answer-text">{{ selectedClass.questions[selectedQuestion - 1].answer }}</p>
+      </div>
+    </div>
+  </div>
+</div>

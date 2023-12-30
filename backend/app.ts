@@ -240,7 +240,7 @@ let classesAvailable : Class[] = [
         ]
     },
     {
-        id: newId(), title: 'Data Science Specialization', author: "Johns Hopkins University", platform: "Coursera";
+        id: newId(), title: 'Data Science Specialization', author: "Johns Hopkins University", platform: "Coursera",
         chapters: [
             {
                 chapterID: 1,

@@ -17,7 +17,7 @@
 
 /* Position the "next button" to the right */
 .next {
-  right: 0;
+  right: 1%;
   border-radius: 3px 0 0 3px;
 }
 
@@ -27,7 +27,7 @@
   height: 15px;
   width: 15px;
   margin-right: 5px;
-  background-color: #bbb;
+  background-color: #E4E5E7;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
@@ -37,7 +37,7 @@
 
 .active,
 .dot:hover {
-  background-color: #717171;
+  background-color: darkgray;
 }
 
 /* Add your CSS styles for the carousel */
@@ -83,8 +83,26 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 2s ease;
   font-size: 23px; /* Adjust font size as needed */
   font-weight: bold; /* Adjust font weight as needed */
   padding: 15px; /* Adjust the padding as needed */
+}
+
+body, html {
+  height: 100%;
+}
+
+.slideshow-container{
+
+  background-image: url("cover.jpg");
+
+  /* Full height */
+  height: 820px;
+  width: 1888px;
+  opacity: 0.8;
+
+  /* Center and scale the image nicely */
+  background-position : center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
