@@ -19,6 +19,7 @@ export interface Class {
     {
       question? : string;
       answer? : string;
+      learnedCoef?: number;
     }
   ]
 }
