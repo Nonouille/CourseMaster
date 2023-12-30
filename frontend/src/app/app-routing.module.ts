@@ -11,7 +11,7 @@ import {CourseDetailComponent} from "./course-detail/course-detail.component";
 const routes: Routes = [
   { path : '', component : CourseComponent},
   { path : 'course/:id', component: CourseDetailComponent},
-  { path : 'course/:id/question/:id', component : CourseQuizzComponent},
+  { path : 'course/:classId/question/:questionId', component : CourseQuizzComponent},
   { path : 'course-edit' , component : CourseEditComponent},
   { path : 'course-edit-detail/:id', component : CourseEditDetailComponent},
   { path : 'lesson-select', component : LessonSelectComponent},

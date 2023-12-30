@@ -1155,5 +1155,31 @@ app.listen(PORT, () => {
  *         description: Successful response with a message indicating the class was removed
  *       404:
  *         description: Class with the provided ID not found in the picked classes list
+ */
+/**
+ * @swagger
+ * /api/updateCoef/{idClass}/question/{idQuestion}:
+ *     put:
+ *       summary: Update learned coefficient for a question in a class
+ *       description: Update the learned coefficient for a specific question in a class.
+ *       parameters:
+ *         - in: path
+ *           name: idClass
+ *           required: true
+ *           description: The ID of the class.
+ *           schema:
+ *             type: integer
+ *         - in: path
+ *           name: idQuestion
+ *           required: true
+ *           description: The ID of the question.
+ *           schema:
+ *             type: integer
+ *       responses:
+ *         200:
+ *           description: Successful update of learned coefficient.
+ *         404:
+ *           description: Entity not found.
+ *
  */ 
 //# sourceMappingURL=app.js.map
