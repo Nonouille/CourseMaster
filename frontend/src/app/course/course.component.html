@@ -1,16 +1,23 @@
 <div class="container">
- <div class="row">
-   <div class="col-md-6 offset-md-3">
-     <!--<carousel>
-       <slide *ngFor="let classItem of pickedClasses">
-         <div class="carousel-caption">
-           <h3>{{ classItem.title }}</h3>
-           <p>{{ classItem.description }}</p>
-           Add other class details here
-          </div>
-        </slide>
-      </carousel>-->
+  <div class="container">
+    <div class="slideshow-container">
+      <div *ngFor="let class of pickedClasses; let i = index" [class]="i === slideIndex ? 'slide active' : 'slide'">
+        <div class="numbertext">
+          <span class="dot">{{ class.title }}</span>
+        </div>
+        <div class="text">{{ class.description }}</div>
+      </div>
+
+      <!-- Next and previous buttons -->
+      <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+      <a class="next" (click)="plusSlides(1)">&#10095;</a>
     </div>
   </div>
-</div>
 
+  <br>
+
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span *ngFor="let class of pickedClasses; let i = index" class="dot" [class.active]="i === slideIndex" (click)="currentSlide(i)"></span>
+  </div>
+</div>
