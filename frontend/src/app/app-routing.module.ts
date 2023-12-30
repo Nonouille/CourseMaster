@@ -13,7 +13,8 @@ const routes: Routes = [
   { path : 'course-edit-detail/:id', component : CourseEditDetailComponent},
   { path : 'lesson-select', component : LessonSelectComponent},
   { path : 'statistiques', component : StatistiquesComponent},
-  { path : 'course/:id/question/:id', component : CourseQuizzComponent}
+  { path : 'course/:id/question/:id', component : CourseQuizzComponent},
+  { path : '', component : CourseComponent},
 ];
 
 @NgModule({

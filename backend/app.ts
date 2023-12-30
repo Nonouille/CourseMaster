@@ -30,6 +30,7 @@ interface Class {
         {
             question? : string;
             answer? : string;
+            learnedCoef?: number;
         }
     ]
 }
@@ -40,7 +41,6 @@ function newId() {
 let classesAvailable : Class[] = [
     {
         id: newId(), title: 'Python for Everybody', author: "University of Michigan", platform: "Coursera"
-
     },
     {
         id: newId(), title: 'The Web Developer Bootcamp', author: "Colt Steele", platform: "Udemy"
@@ -161,31 +161,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
-const swaggerOptions = {
-    // Other Swagger options
-
-    components: {
-        schemas: {
-            Class: {
-                type: 'object',
-                properties: {
-                    id: { type: 'integer' },
-                    title: { type: 'string' },
-                    author: { type: 'string' },
-                    platform: { type: 'string' },
-                    description: { type: 'string' },
-                    difficulty: { type: 'number' }
-                },
-                // Additional schema properties or definitions for Class
-            },
-            // Define other schemas if needed
-        },
-        // Other components if needed
-    },
-    // Other Swagger options
-};
 
 
 /**

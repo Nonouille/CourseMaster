@@ -10,7 +10,7 @@ import { CourseEditComponent } from './course-edit/course-edit.component';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { CourseEditDetailComponent } from './course-edit-detail/course-edit-detail.component';
 import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
-import {CarouselModule} from "ngx-bootstrap/carousel";
+
 
 @NgModule({
   declarations: [
@@ -26,7 +26,6 @@ import {CarouselModule} from "ngx-bootstrap/carousel";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
