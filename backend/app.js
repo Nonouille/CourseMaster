@@ -1038,6 +1038,19 @@ app.delete('/api/remove-from-picked/:id', (req, res) => {
         res.status(404).send({ error: `Class with ID ${classIdToRemove} not found in personal.` });
     }
 });
+app.put('/api/updateCoef/:idClass/question/:idQuestion', (req, res) => {
+    const idClass = +req.params.idClass;
+    const idx = pickedClasses.findIndex(p => p.id === idClass);
+    const idQuestion = +req.params.idQuestion - 1;
+    const coef = req.body;
+    if (idx !== -1 && pickedClasses[idx].questions[idQuestion]) {
+        pickedClasses[idx].questions[idQuestion].learnedCoef = coef;
+        res.status(200).send(pickedClasses[idx]);
+    }
+    else {
+        res.status(404).send(`Entity not found for id : ${idClass}`);
+    }
+});
 app.put('/api/modify-chapter/:id', (req, res) => {
     const id = +req.params.id;
     const idx = classesAvailable.findIndex(p => p.id === id);

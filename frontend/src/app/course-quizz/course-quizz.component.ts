@@ -33,4 +33,18 @@ export class CourseQuizzComponent implements OnInit{
       }
     );
   }
+
+  changeCoef(param:number){
+    const classId = this.selectedClass?.id;
+    const questionId = this.selectedQuestion;
+    const body = {param : param};
+    this.http.put(`/api/updateCoef/${classId}/question/${questionId}`,body).subscribe(
+      (data: any) => {
+        console.log(`Coef of question ${questionId} from class ${classId} modified`);
+      },
+      (error: any) => {
+        console.error('Error fetching classes:', error);
+      }
+    )
+  }
 }

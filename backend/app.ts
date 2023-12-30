@@ -1075,6 +1075,22 @@ app.delete('/api/remove-from-picked/:id', (req, res) => {
     }
 });
 
+app.put('/api/updateCoef/:idClass/question/:idQuestion', (req: Request, res: Response) => {
+    const idClass = +req.params.idClass;
+    const idx = pickedClasses.findIndex(p=> p.id === idClass);
+    const idQuestion = +req.params.idQuestion-1;
+    const coef = req.body;
+    if (idx!==-1 && pickedClasses[idx].questions[idQuestion])
+    {
+        pickedClasses[idx].questions[idQuestion].learnedCoef = coef;
+        res.status(200).send(pickedClasses[idx])
+    }
+    else
+    {
+        res.status(404).send(`Entity not found for id : ${idClass}`)
+    }
+})
+
 
 app.put('/api/modify-chapter/:id', (req: Request, res: Response) => {
     const id = +req.params.id;

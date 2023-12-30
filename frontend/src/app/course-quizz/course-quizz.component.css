@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 820px;
+  height: 720px;
   width: 1888px;
 }
 
@@ -61,3 +61,44 @@
 .flipped {
   transform: rotateY(180deg);
 }
+
+.quizz-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.quizz-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.quizz-button {
+  font-size: 13pt;
+}
+
+.quizz-button:hover {
+  background-color: #ddd;
+}
+
+/* Apply specific colors to match the card's design */
+.quizz-button:nth-child(1) {
+  background-color: #FF7373; /* Color match for "Not understood" */
+  color: white;
+}
+
+.quizz-button:nth-child(2) {
+  background-color: #F5DF4D; /* Color match for "Well understood" */
+  color: white;
+}
+
+.quizz-button:nth-child(3) {
+  background-color: #8CDECC; /* Color match for "Understanding" */
+  color: white;
+}
+
