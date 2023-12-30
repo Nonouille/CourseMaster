@@ -15,6 +15,7 @@ app.get('/api/liveness', (req: Request, res: Response) => {
 
 interface Class {
     id: number;
+    name?: string;
     title: string;
     author: string;
     platform: string;
