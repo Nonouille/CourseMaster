@@ -1,7 +1,7 @@
 <h2 class="container">{{ selectedClass?.title }}</h2>
 <div class="chapters-container">
   <div *ngFor="let chapter of selectedClass?.chapters" class="chapter">
-    <p class="chapter-id">{{ chapter.chapterID }}</p>
+    <p class="chapter-id">Chapter {{ chapter.chapterID }} :</p>
     <p class="chapter-text">{{ chapter.text }}</p>
   </div>
 </div>

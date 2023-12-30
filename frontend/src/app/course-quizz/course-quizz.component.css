@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 720px;
-  width: 1888px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .card {
