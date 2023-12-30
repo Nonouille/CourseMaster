@@ -30,7 +30,7 @@ interface Class {
         {
             question? : string;
             answer? : string;
-            learnedCoef?: number;
+            learnedCoef? : number;
         }
     ]
 }
@@ -139,13 +139,12 @@ app.delete('/api/remove-from-picked/:id', (req, res) => {
 });
 
 
-app.put('/api/modify-class/:id', (req: Request, res: Response) => {
+app.put('/api/modify-chapter/:id', (req: Request, res: Response) => {
     const id = +req.params.id;
-    const title : string = req.body;
     const idx = classesAvailable.findIndex(p=> p.id === id);
     if (idx!==-1)
     {
-        classesAvailable[idx].title = title;
+        //modifier contenu du chapitre
         res.status(200).send(classesAvailable[idx])
     }
     else

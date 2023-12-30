@@ -101,12 +101,11 @@ app.delete('/api/remove-from-picked/:id', (req, res) => {
         res.status(404).send({ error: `Class with ID ${classIdToRemove} not found in personal.` });
     }
 });
-app.put('/api/modify-class/:id', (req, res) => {
+app.put('/api/modify-chapter/:id', (req, res) => {
     const id = +req.params.id;
-    const title = req.body;
     const idx = classesAvailable.findIndex(p => p.id === id);
     if (idx !== -1) {
-        classesAvailable[idx].title = title;
+        //modifier contenu du chapitre
         res.status(200).send(classesAvailable[idx]);
     }
     else {
@@ -118,28 +117,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-const swaggerOptions = {
-    // Other Swagger options
-    components: {
-        schemas: {
-            Class: {
-                type: 'object',
-                properties: {
-                    id: { type: 'integer' },
-                    title: { type: 'string' },
-                    author: { type: 'string' },
-                    platform: { type: 'string' },
-                    description: { type: 'string' },
-                    difficulty: { type: 'number' }
-                },
-                // Additional schema properties or definitions for Class
-            },
-            // Define other schemas if needed
-        },
-        // Other components if needed
-    },
-    // Other Swagger options
-};
 /**
  * @swagger
  * /api/availableClasses:

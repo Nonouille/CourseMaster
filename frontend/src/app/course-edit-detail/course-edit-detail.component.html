@@ -16,4 +16,9 @@
       <p>Difficulty :</p>
       <a>{{modifiedClass?.difficulty}}</a>
   </div>
+  <div *ngFor="let chapter of modifiedClass?.chapters" class="detail">
+    <p>Chapter {{ chapter.chapterID }} :</p>
+    <a>{{chapter.text}}</a>
+  </div>
+  <button>Update</button>
 </div>
