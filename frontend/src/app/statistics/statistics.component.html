@@ -1,8 +1,10 @@
 
 <p>Number of cards viewed: {{ cardsViewedCount | async }}</p>
-<p>Number of cards understood: {{ cardsUnderstoodCount | async }}</p>
 <p>Number of cards not understood: {{ cardsNotUnderstoodCount | async }}</p>
+
+
 <p>Number of cards understanding: {{ cardsUnderstandingCount | async }}</p>
+<p>Number of cards understood: {{ cardsUnderstoodCount | async }}</p>
 <button (click)="onViewCard()">View a Card</button>
 
 
