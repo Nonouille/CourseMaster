@@ -12,6 +12,7 @@ import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import {FormsModule} from "@angular/forms";
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {FormsModule} from "@angular/forms";
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+      HighchartsChartModule
     ],
   providers: [],
   bootstrap: [AppComponent]

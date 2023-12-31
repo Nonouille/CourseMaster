@@ -22,6 +22,8 @@
     "ag-charts-community": "^9.0.1",
     "ag-grid-angular": "^31.0.1",
     "ag-grid-community": "^31.0.1",
+    "highcharts": "^11.2.0",
+    "highcharts-angular": "^4.0.0",
     "node": "^21.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
