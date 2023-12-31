@@ -18,7 +18,7 @@
   </div>
   <div *ngFor="let chapter of modifiedClass?.chapters" class="detail">
     <p>Chapter {{ chapter.chapterID }} :</p>
-    <a>{{chapter.text}}</a>
+    <input value="{{chapter.text}}">
   </div>
   <button>Update</button>
 </div>
