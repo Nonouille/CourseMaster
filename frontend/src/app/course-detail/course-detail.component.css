@@ -18,15 +18,20 @@
 }
 
 .quizz-button {
-  border-radius: 5%;
+  border: none;
+  border-radius: 5px;
   position: absolute;
   bottom: 0;
   right: 0;
   margin-bottom: 50px;
   margin-right: 100px;
   padding: 10px 20px; /* Adjust padding for better button appearance */
-  background-color: #4CAF50; /* Add your preferred button color */
+  background-color: #3498db; /* Add your preferred button color 1f7ab7*/
   color: white;
-  border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.quizz-button:hover{
+  background-color: #1f7ab7; /* Darker green on hover */
 }
