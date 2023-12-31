@@ -1098,9 +1098,13 @@ app.put('/api/updateCoef/:idClass/question/:idQuestion', (req: Request, res: Res
 app.put('/api/modify-chapter/:id', (req: Request, res: Response) => {
     const id = +req.params.id;
     const idx = classesAvailable.findIndex(p=> p.id === id);
+    const idxpicked = pickedClasses.findIndex(p=> p.id === id);
+    const updatedClass = req.body;
     if (idx!==-1)
     {
         //modifier contenu du chapitre
+        pickedClasses[idxpicked] = updatedClass;
+        classesAvailable[idx] = updatedClass;
         res.status(200).send(classesAvailable[idx])
     }
     else

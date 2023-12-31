@@ -9,7 +9,7 @@ import {ActivatedRoute, Params} from "@angular/router";
   styleUrls: ['./course-edit-detail.component.css']
 })
 export class CourseEditDetailComponent implements OnInit{
-  modifiedClass : Class | undefined ;
+  modifiedClass : Class |undefined ;
   constructor(private http : HttpClient) {
   }
   ngOnInit() {
@@ -26,7 +26,16 @@ export class CourseEditDetailComponent implements OnInit{
     );
   }
 
-  modifyClass(id:number|undefined){
-
+  modifyClass(){
+    if (this.modifiedClass && this.modifiedClass.chapters) {
+      for (let chapter of this.modifiedClass.chapters) {
+        const chapterID = chapter.chapterID;
+        const newText = (document.getElementById(`chapterText${chapterID - 1}`) as HTMLInputElement).value;
+        chapter.text = newText;
+      }
+    }
+    const body = this.modifiedClass;
+    this.http.put<Class>(`/api/modify-chapter/${this.modifiedClass?.id}`, body).subscribe(data => this.modifiedClass = data);
+    window.location.reload();
   }
 }

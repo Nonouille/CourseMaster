@@ -11,6 +11,7 @@ import { CourseEditDetailComponent } from './course-edit-detail/course-edit-deta
 import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -24,11 +25,12 @@ import { StatisticsComponent } from './statistics/statistics.component';
     CourseQuizzComponent,
     CourseDetailComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

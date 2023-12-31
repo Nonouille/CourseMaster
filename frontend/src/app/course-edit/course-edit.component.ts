@@ -17,6 +17,7 @@ export class CourseEditComponent implements OnInit{
       this.http.get<Class[]>('/api/pickedClasses').subscribe(
           (data: Class[]) => {
               this.pickedClasses = data;
+              console.log(this.pickedClasses);
           },
           (error: any) => {
               console.error('Error fetching classes:', error);

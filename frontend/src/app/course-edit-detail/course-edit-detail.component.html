@@ -16,11 +16,12 @@
       <p>Difficulty :</p>
       <a>{{modifiedClass?.difficulty}}</a>
   </div>
-  <div *ngFor="let chapter of modifiedClass?.chapters" class="detail">
-    <p>Chapter {{ chapter.chapterID }} :</p>
-    <input value="{{chapter.text}}">
+  <div *ngFor="let chapter of modifiedClass?.chapters; let i = index" class="detail">
+    <p>Chapter {{ chapter?.chapterID }} :</p>
+    <input value="{{chapter?.text}}" id="chapterText{{i}}">
+
   </div>
   <div class="buttonContainer">
-    <button class="buttonUpdate" (click)="modifyClass(modifiedClass?.id)">Update</button>
+    <button class="buttonUpdate" (click)="modifyClass()">Update</button>
   </div>
 </div>
