@@ -2,24 +2,30 @@ import {Component, OnInit} from '@angular/core';
 import {Class} from "../app.component";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
+import { StatisticsService } from '../statistics/statistics.service';
 
 @Component({
   selector: 'app-course-quizz',
   templateUrl: './course-quizz.component.html',
-  styleUrls: ['./course-quizz.component.css']
+  styleUrls: ['./course-quizz.component.css'],
+
 })
 export class CourseQuizzComponent implements OnInit{
   selectedClass : Class | undefined;
   selectedQuestion : number =1;
   isFlipped: boolean = false;
 
+
   // Method to toggle the card flip
   toggleCard(): void {
     this.isFlipped = !this.isFlipped;
   }
 
-  constructor(private http : HttpClient, private router : Router,private route: ActivatedRoute) {
+  constructor(private http : HttpClient, private router : Router,private route: ActivatedRoute,private statisticsService: StatisticsService) {
 
+  }
+  onViewCard(): void {
+    this.statisticsService.incrementCardsViewedCount()
   }
   ngOnInit() {
     console.log('Starting quizz')
@@ -60,5 +66,6 @@ export class CourseQuizzComponent implements OnInit{
         console.error('Error fetching classes:', error);
       }
     )
+    this.onViewCard();
   }
 }
