@@ -3,25 +3,53 @@
     flex-direction: column;
     gap: 10px;
     padding-top: 30px;
-    font-family: Arial, sans-serif;
     width: 1500px; /* Adjust width as needed */
     margin: 0 auto;
 }
 
 .detail {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .detail p {
     margin: 0;
     font-weight: bold;
+    width: 110px;
 }
 
 input {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
+    width: 75%;
     box-sizing: border-box;
+}
+
+.buttonUpdate {
+  margin-left: 1400px;
+  margin-top: 100px;
+  width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50; /* Green background color */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.buttonUpdate:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 30px;
+  width: 1500px; /* Adjust width as needed */
+  margin: 0 auto;
 }

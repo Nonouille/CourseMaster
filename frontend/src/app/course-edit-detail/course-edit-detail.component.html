@@ -12,7 +12,7 @@
     <p>Description :</p>
     <a>{{modifiedClass?.description}}</a>
   </div>
-  <div class="detail">
+  <div class="detail" style="margin-bottom: 50px">
       <p>Difficulty :</p>
       <a>{{modifiedClass?.difficulty}}</a>
   </div>
@@ -20,5 +20,7 @@
     <p>Chapter {{ chapter.chapterID }} :</p>
     <input value="{{chapter.text}}">
   </div>
-  <button>Update</button>
+  <div class="buttonContainer">
+    <button class="buttonUpdate" (click)="modifyClass(modifiedClass?.id)">Update</button>
+  </div>
 </div>

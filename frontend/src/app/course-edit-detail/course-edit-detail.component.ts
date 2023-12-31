@@ -25,4 +25,8 @@ export class CourseEditDetailComponent implements OnInit{
         }
     );
   }
+
+  modifyClass(id:number|undefined){
+
+  }
 }
