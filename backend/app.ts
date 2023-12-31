@@ -12,8 +12,10 @@ app.get('/api/liveness', (req: Request, res: Response) => {
     res.send('OK !!!');
 });
 
-let cardsViewedCount = 20;
-
+let cardsViewedCount = 0;
+let cardsUnderstoodCount = 0;
+let cardsUnderstandingCount=0;
+let cardsNotUnderstoodCount=0;
 interface Class {
     id: number;
     name?: string;
@@ -1116,6 +1118,27 @@ app.put('/api/incrementCardsViewedCount', (req, res) => {
     res.send({ cardsViewedCount });
 });
 
+app.get('/api/cardsUnderstoodCount', (req, res) => {
+    res.send({ cardsUnderstoodCount });
+});
+app.put('/api/incrementcardsUnderstoodCount', (req, res) => {
+    cardsUnderstoodCount++;
+    res.send({ cardsUnderstoodCount });
+});
+app.get('/api/cardsUnderstandingCount', (req, res) => {
+    res.send({ cardsUnderstandingCount });
+});
+app.put('/api/incrementcardsUnderstandingCount', (req, res) => {
+    cardsUnderstandingCount++;
+    res.send({ cardsUnderstandingCount });
+});
+app.get('/api/cardsNotUnderstoodCount', (req, res) => {
+    res.send({ cardsNotUnderstoodCount });
+});
+app.put('/api/incrementcardsNotUnderstoodCount', (req, res) => {
+    cardsNotUnderstoodCount++;
+    res.send({ cardsNotUnderstoodCount });
+});
 console.log('starting...');
 
 const PORT = process.env.PORT || 3000;

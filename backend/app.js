@@ -9,7 +9,10 @@ app.use('/api-docs', swaggerOptions_1.swaggerUi.serve, swaggerOptions_1.swaggerU
 app.get('/api/liveness', (req, res) => {
     res.send('OK !!!');
 });
-let cardsViewedCount = 20;
+let cardsViewedCount = 0;
+let cardsUnderstoodCount = 0;
+let cardsUnderstandingCount = 0;
+let cardsNotUnderstoodCount = 0;
 let idGenerator = 1;
 function newId() {
     return idGenerator++;
@@ -1069,6 +1072,27 @@ app.get('/api/cardsViewedCount', (req, res) => {
 app.put('/api/incrementCardsViewedCount', (req, res) => {
     cardsViewedCount++;
     res.send({ cardsViewedCount });
+});
+app.get('/api/cardsUnderstoodCount', (req, res) => {
+    res.send({ cardsUnderstoodCount });
+});
+app.put('/api/incrementcardsUnderstoodCount', (req, res) => {
+    cardsUnderstoodCount++;
+    res.send({ cardsUnderstoodCount });
+});
+app.get('/api/cardsUnderstandingCount', (req, res) => {
+    res.send({ cardsUnderstandingCount });
+});
+app.put('/api/incrementcardsUnderstandingCount', (req, res) => {
+    cardsUnderstandingCount++;
+    res.send({ cardsUnderstandingCount });
+});
+app.get('/api/cardsNotUnderstoodCount', (req, res) => {
+    res.send({ cardsNotUnderstoodCount });
+});
+app.put('/api/incrementcardsNotUnderstoodCount', (req, res) => {
+    cardsNotUnderstoodCount++;
+    res.send({ cardsNotUnderstoodCount });
 });
 console.log('starting...');
 const PORT = process.env.PORT || 3000;

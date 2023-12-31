@@ -1,60 +1,9 @@
-<!-- statistics.component.html -->
-
 
 <p>Number of cards viewed: {{ cardsViewedCount | async }}</p>
+<p>Number of cards understood: {{ cardsUnderstoodCount | async }}</p>
+<p>Number of cards not understood: {{ cardsNotUnderstoodCount | async }}</p>
+<p>Number of cards understanding: {{ cardsUnderstandingCount | async }}</p>
 <button (click)="onViewCard()">View a Card</button>
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistics Page</title>
-</head>
-<body>
-
-<header>
-    <h1>Statistics</h1>
-</header>
-
-<section>
-    <h2>Overview</h2>
-    <p>Number of cards viewed: 50</p>
-    <p>Total study time: 10 hours</p>
-    <p>Number of quizzes completed: 20</p>
-</section>
-
-<section>
-    <h2>Performance Breakdown</h2>
-    <ul>
-        <li>Correct answers: 80</li>
-        <li>Incorrect answers: 5</li>
-        <li>Overall success rate: 94%</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Subject-wise Statistics</h2>
-    <div>
-        <h3>Math</h3>
-        <p>Time spent: 4 hours</p>
-        <p>Quizzes completed: 10</p>
-        <p>Correct answers: 8</p>
-        <p>Incorrect answers: 2</p>
-        <p>Success rate: 80%</p>
-    </div>
-    <div>
-        <h3>Science</h3>
-        <p>Time spent: 3 hours</p>
-        <p>Quizzes completed: 8</p>
-        <p>Correct answers: 7</p>
-        <p>Incorrect answers: 1</p>
-        <p>Success rate: 87.5%</p>
-    </div>
-    <!-- Ajoutez d'autres sections pour d'autres matières -->
-</section>
-
-</body>
-</html>
