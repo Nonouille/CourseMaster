@@ -1,9 +1,12 @@
 # CourseMaster
 Students : 
 
-Arnaud PY (65%)
-Tom Simon (15%)
-Rémi Peltriaux (10%)
+Arnaud PY (65%) gitid : 'Nonouille'
+
+Tom Simon (15%) gitid : 'TomSim0n'
+
+Rémi Peltriaux (10%) gitid : 'Remsptx'
+
 Bertrand Nagy (10%)
 
 
