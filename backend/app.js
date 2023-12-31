@@ -9,6 +9,7 @@ app.use('/api-docs', swaggerOptions_1.swaggerUi.serve, swaggerOptions_1.swaggerU
 app.get('/api/liveness', (req, res) => {
     res.send('OK !!!');
 });
+let cardsViewedCount = 20;
 let idGenerator = 1;
 function newId() {
     return idGenerator++;
@@ -1061,6 +1062,13 @@ app.put('/api/modify-chapter/:id', (req, res) => {
     else {
         res.status(404).send(`Entity not found for id : ${id}`);
     }
+});
+app.get('/api/cardsViewedCount', (req, res) => {
+    res.send({ cardsViewedCount });
+});
+app.put('/api/incrementCardsViewedCount', (req, res) => {
+    cardsViewedCount++;
+    res.send({ cardsViewedCount });
 });
 console.log('starting...');
 const PORT = process.env.PORT || 3000;

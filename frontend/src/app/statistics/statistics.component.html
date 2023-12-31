@@ -1,9 +1,9 @@
 <!-- statistics.component.html -->
-<p>Number of cards viewed: {{ cardsViewedCount }}</p>
 
 
-<!-- Ajoutez ce bouton où vous le souhaitez dans votre template -->
-<button class="quizz-button" type="button" (click)="onViewCard()">View Card</button>
+<p>Number of cards viewed: {{ cardsViewedCount | async }}</p>
+<button (click)="onViewCard()">View a Card</button>
+
 
 
 <!DOCTYPE html>

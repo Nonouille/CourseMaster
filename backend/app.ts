@@ -12,6 +12,7 @@ app.get('/api/liveness', (req: Request, res: Response) => {
     res.send('OK !!!');
 });
 
+let cardsViewedCount = 20;
 
 interface Class {
     id: number;
@@ -1106,6 +1107,14 @@ app.put('/api/modify-chapter/:id', (req: Request, res: Response) => {
     }
 })
 
+
+app.get('/api/cardsViewedCount', (req, res) => {
+    res.send({ cardsViewedCount });
+});
+app.put('/api/incrementCardsViewedCount', (req, res) => {
+    cardsViewedCount++;
+    res.send({ cardsViewedCount });
+});
 
 console.log('starting...');
 

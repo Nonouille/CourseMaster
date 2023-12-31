@@ -1,31 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { StatisticsService } from './statistics.service'; // Assurez-vous d'importer le service approprié
-import { Subscription } from 'rxjs';
-import { ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,OnDestroy, ChangeDetectorRef } from '@angular/core';
+import {BehaviorSubject,Observable, Subscription} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.css'],
-  providers: [StatisticsService]
+  providers: []
 })
-export class StatisticsComponent implements OnInit {
-  cardsViewedCount: number = 0;
-  private subscription?: Subscription;
-  constructor(private statisticsService: StatisticsService,private cdr: ChangeDetectorRef) { }
-
-
+export class StatisticsComponent implements OnInit,OnDestroy {
+  cardsViewedCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  subscription?: Subscription;
+  constructor(private http: HttpClient) {
+    this.fetchCardsViewedCount();
+  }
   onViewCard(): void {
-    this.statisticsService.incrementCardsViewedCount()
+    this.incrementCardsViewedCount()
   }
 
   ngOnInit(): void {
-    this.statisticsService.getCardsViewedCount().subscribe((count) => {
-      this.cardsViewedCount = count;
-    });
   }
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
+  }
+
+  incrementCardsViewedCount(): void {
+    this.http.put<{ cardsViewedCount: number }>('/api/incrementCardsViewedCount', {}).subscribe(data => {
+      const count = data.cardsViewedCount;
+      this.cardsViewedCount.next(count);
+    });
+  }
+
+  getCardsViewedCount(): Observable<number> {
+    return this.cardsViewedCount.asObservable();
+  }
+  fetchCardsViewedCount(): void {
+    this.http.get<{ cardsViewedCount: number }>('/api/cardsViewedCount').subscribe(data => {
+      this.cardsViewedCount.next(data.cardsViewedCount);
+    });
   }
 
 

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Class} from "../app.component";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
-import { StatisticsService } from '../statistics/statistics.service';
 
 @Component({
   selector: 'app-course-quizz',
@@ -21,11 +20,8 @@ export class CourseQuizzComponent implements OnInit{
     this.isFlipped = !this.isFlipped;
   }
 
-  constructor(private http : HttpClient, private router : Router,private route: ActivatedRoute,private statisticsService: StatisticsService) {
+  constructor(private http : HttpClient, private router : Router,private route: ActivatedRoute) {
 
-  }
-  onViewCard(): void {
-    this.statisticsService.incrementCardsViewedCount()
   }
   ngOnInit() {
     console.log('Starting quizz')
@@ -66,6 +62,6 @@ export class CourseQuizzComponent implements OnInit{
         console.error('Error fetching classes:', error);
       }
     )
-    this.onViewCard();
+
   }
 }
