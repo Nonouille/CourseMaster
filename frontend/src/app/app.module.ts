@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from "@angular/common/http";
@@ -12,7 +12,6 @@ import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import {FormsModule} from "@angular/forms";
-import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -31,7 +30,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-      HighchartsChartModule
+        CommonModule
     ],
   providers: [],
   bootstrap: [AppComponent]
